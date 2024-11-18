@@ -50,3 +50,134 @@ docker exec -it CONTAINER_ID/NAME bash
 
 # View logs of a running container
 docker logs -f CONTAINER_ID/NAME
+
+**************************************************************************
+//  Image Management
+
+# List all Docker images on your system
+docker images
+
+# Pull an image from Docker Hub
+docker pull IMAGE_NAME[:TAG]
+
+# Build an image from a Dockerfile
+docker build -t my-image:latest .
+
+# Tag an existing image with a new tag
+docker tag my-image:latest my-repo/my-image:v1.0
+
+# Push an image to a remote repository
+docker push my-repo/my-image:v1.0
+
+# Remove a Docker image
+docker rmi IMAGE_ID/NAME
+
+# Remove unused images
+docker image prune
+
+******************************************************************************
+
+// Volumes Management
+
+# List all Docker volumes
+docker volume ls
+
+# Create a new volume
+docker volume create my-volume
+
+# Inspect details of a volume
+docker volume inspect my-volume
+
+# Remove a volume
+docker volume rm my-volume
+
+# Remove unused volumes
+docker volume prune
+
+# Run a container with a mounted volume
+docker run -d -v my-volume:/data --name my-app IMAGE
+
+***********************************************************************
+
+// Network Management
+
+# List all Docker networks
+docker network ls
+
+# Create a new network
+docker network create my-network
+
+# Inspect a network
+docker network inspect my-network
+
+# Connect a running container to a network
+docker network connect my-network CONTAINER_ID/NAME
+
+# Disconnect a container from a network
+docker network disconnect my-network CONTAINER_ID/NAME
+
+# Remove a Docker network
+docker network rm my-network
+
+# Remove unused networks
+docker network prune
+****************************************************************************
+
+// Docker Compose Commands
+
+# Start services defined in docker-compose.yml
+docker-compose up
+
+# Start services in detached mode
+docker-compose up -d
+
+# Stop services
+docker-compose down
+
+# Build images specified in the compose file
+docker-compose build
+
+# List running services
+docker-compose ps
+
+# Restart services
+docker-compose restart
+
+# View logs for all services
+docker-compose logs -f
+********************************************************************************
+
+// Docker Cleanup Commands
+
+# Remove all stopped containers, unused networks, images, and build cache
+docker system prune -a
+
+# Clean up only dangling (unused) images
+docker image prune
+
+# Clean up all stopped containers
+docker container prune
+
+# Clean up unused volumes
+docker volume prune
+
+# Clean up unused networks
+docker network prune
+**********************************************************************************
+
+// Miscellaneous Commands
+
+# Check resource usage by containers (CPU, memory, etc.)
+docker stats
+
+# Save a Docker image to a tar archive
+docker save -o my-image.tar my-image:latest
+
+# Load a Docker image from a tar archive
+docker load -i my-image.tar
+
+# Export a running container’s filesystem as a tar archive
+docker export -o my-container.tar CONTAINER_ID/NAME
+
+# Import a tar archive to create a new image
+docker import my-container.tar new-image
